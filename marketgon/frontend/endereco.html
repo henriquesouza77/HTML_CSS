@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Cadastrar Endereço - Market Gon</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="barra-navegacao-checkout">
+  <a href="index.html">☰ Voltar para compras</a>
+  <a href="carrinho.html">Ir para o carrinho ›</a>
+</div>
+
+<header class="header">
+  <div class="logo">MARKET<span>GON</span></div>
+  <div class="header-frase" style="display:flex;gap:10px"><a href="index.html">Home</a> › <a href="#">Dados</a></div>
+</header>
+
+<div class="admin-layout" style="grid-template-columns:260px 1fr;">
+  <aside class="admin-sidebar">
+    <div class="saudacao"><span class="avatar">👤</span> Olá, henrique</div>
+    <nav>
+      <a href="#">📄 Dados</a>
+      <a href="#">💳 Cartões salvos</a>
+      <a href="#" class="ativo">📍 Endereços cadastrados</a>
+      <a href="carrinho.html">🛒 Pedidos</a>
+    </nav>
+  </aside>
+
+  <main class="painel" style="background:#232d3d;">
+    <h2>Cadastrar endereço</h2>
+    <p class="aviso-obrigatorio" style="color:#9aa;font-size:13px;">Os campos marcados com (*) são obrigatórios</p>
+    <form id="form-endereco">
+      <div class="linha-dupla">
+        <div class="campo">
+          <label>CEP*</label>
+          <input type="text" id="cep" required>
+        </div>
+        <div class="campo" style="align-self:end;"><a href="#" class="link-secundario">Não sei meu CEP</a></div>
+      </div>
+      <div class="campo">
+        <label>Nome do destinatário*</label>
+        <input type="text" id="destinatario" required>
+      </div>
+      <div class="linha-dupla">
+        <div class="campo" style="flex:3">
+          <label>Endereço*</label>
+          <input type="text" id="endereco" required>
+        </div>
+        <div class="campo" style="flex:1">
+          <label>Número*</label>
+          <input type="text" id="numero" required>
+        </div>
+      </div>
+      <div class="campo">
+        <label>Bairro*</label>
+        <input type="text" id="bairro" required>
+      </div>
+      <div class="campo">
+        <label>Cidade*</label>
+        <input type="text" id="cidade" required>
+      </div>
+      <div class="linha-dupla">
+        <div class="campo">
+          <label>Tipo de local</label>
+          <input type="text" id="tipo_local">
+        </div>
+        <div class="campo">
+          <label>Ponto de referência</label>
+          <input type="text" id="ponto_referencia">
+        </div>
+      </div>
+      <button type="submit" class="btn-primario" style="max-width:220px;">Salvar endereço</button>
+    </form>
+  </main>
+</div>
+
+<div class="faixa-segura">🔒 Informações 100% seguras</div>
+
+<script src="js/api.js"></script>
+<script>
+document.getElementById('form-endereco').addEventListener('submit', (e) => {
+  e.preventDefault();
+  alert('Endereço salvo com sucesso!');
+  window.location.href = 'carrinho.html';
+});
+</script>
+</body>
+</html>

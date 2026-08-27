@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Entrar - Market Gon</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">MARKET<span>GON</span></div>
+  <div class="header-frase">"Receba no conforto de casa"</div>
+</header>
+
+<div class="pagina-formulario">
+  <div class="formulario-lateral">
+    <div class="cartao-form">
+      <h2>Entrar na sua conta</h2>
+      <p class="aviso-obrigatorio">Os campos marcados com (*) são obrigatórios</p>
+      <form id="form-login">
+        <div class="campo">
+          <label for="email">Email*</label>
+          <input type="email" id="email" required>
+        </div>
+        <div class="campo">
+          <label for="senha">Senha*</label>
+          <input type="password" id="senha" required>
+        </div>
+        <button type="submit" class="btn-primario">Entrar</button>
+        <p id="mensagem-erro" class="mensagem-erro"></p>
+      </form>
+      <p>Não tem conta? <a href="cadastro.html" class="link-secundario">Cadastre-se</a></p>
+    </div>
+  </div>
+  <div class="formulario-marca">
+    <img src="assets/marketgon.svg" alt="Market Gon">
+    <h2>MARKET GON</h2>
+    <p>"Cadastre-se e receba ofertas imbatíveis do MARKET GON"</p>
+  </div>
+</div>
+
+<div class="faixa-segura">🔒 Informações 100% seguras</div>
+
+<script src="js/api.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>
