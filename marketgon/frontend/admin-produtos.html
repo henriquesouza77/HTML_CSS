@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Admin - Produtos - Market Gon</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<header class="admin-header">
+  <div class="logo">MARKET<br>GON</div>
+  <div class="breadcrumb"><a href="index.html">Home</a> › <a href="admin-produtos.html">Dados</a></div>
+  <div class="marca-central">🧺 MARKET GON</div>
+  <div class="usuario">👤 <span id="nome-usuario-admin">Henrique</span> adm ▾
+    <a href="#" onclick="sair()" style="margin-left:10px;color:#b00;">Sair</a>
+  </div>
+</header>
+
+<div class="admin-layout">
+  <aside class="admin-sidebar">
+    <div class="saudacao"><span class="avatar">👤</span> Olá, henrique</div>
+    <nav>
+      <a href="admin-dashboard.html">👤 Dashboard</a>
+      <a href="admin-produtos.html" class="ativo">📦 Produtos</a>
+      <a href="admin-dashboard.html">🛒 Pedidos</a>
+      <a href="admin-produtos.html">📊 Estoque</a>
+      <a href="admin-dashboard.html">📈 Analytics</a>
+      <a href="admin-dashboard.html">👥 Clientes</a>
+    </nav>
+  </aside>
+
+  <main class="admin-painel">
+    <div class="produtos-topo">
+      <h2>Produtos</h2>
+      <div class="campo-busca-produto">
+        <input type="text" id="campo-busca-produto" placeholder="Pesquisar produto">
+        <span>🔍</span>
+      </div>
+      <a href="#" class="link-adicionar" onclick="abrirModalProduto(); return false;">+ Adicionar novo Produto</a>
+    </div>
+
+    <div class="grid-produtos-admin" id="grid-produtos-admin"></div>
+  </main>
+</div>
+
+<!-- Modal de criação/edição de produto -->
+<div class="modal-fundo" id="modal-produto">
+  <div class="modal-caixa">
+    <h3 id="titulo-modal-produto">Adicionar novo produto</h3>
+    <form id="form-produto">
+      <div class="campo">
+        <label>Nome</label>
+        <input type="text" id="campo-nome" required>
+      </div>
+      <div class="campo">
+        <label>Descrição</label>
+        <textarea id="campo-descricao" rows="2"></textarea>
+      </div>
+      <div class="linha-dupla" style="display:flex;gap:10px;">
+        <div class="campo" style="flex:1">
+          <label>Preço (R$)</label>
+          <input type="number" step="0.01" id="campo-preco" required>
+        </div>
+        <div class="campo" style="flex:1">
+          <label>Preço promocional (R$)</label>
+          <input type="number" step="0.01" id="campo-preco-promo">
+        </div>
+      </div>
+      <div class="linha-dupla" style="display:flex;gap:10px;">
+        <div class="campo" style="flex:1">
+          <label>Estoque</label>
+          <input type="number" id="campo-estoque" required>
+        </div>
+        <div class="campo" style="flex:1">
+          <label>Imagem (arquivo em /assets)</label>
+          <input type="text" id="campo-imagem" placeholder="ex: arroz.jpg">
+        </div>
+      </div>
+      <div class="modal-acoes">
+        <button type="button" class="cancelar" onclick="fecharModalProduto()">Cancelar</button>
+        <button type="submit" class="salvar">Salvar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

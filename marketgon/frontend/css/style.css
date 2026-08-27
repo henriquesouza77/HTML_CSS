@@ -1,0 +1,364 @@
+/* =========================================================
+   MARKET GON - Estilos gerais (loja / storefront)
+   Paleta extraída do wireframe:
+   - Verde principal: #3a8f3a / #2f7a2f
+   - Fundo escuro: #1c2430 / #232d3d
+   - Texto claro: #f2f2f2
+   - Laranja (CTA): #ff7a1a
+========================================================= */
+
+:root {
+  --verde: #3f8f3f;
+  --verde-escuro: #2c6b2c;
+  --fundo-escuro: #1e2733;
+  --fundo-card: #ffffff;
+  --texto-claro: #f5f5f5;
+  --texto-escuro: #222222;
+  --laranja: #ff7a1a;
+  --cinza: #6b7280;
+  --borda: #d9d9d9;
+  --font: 'Segoe UI', Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: var(--fundo-escuro);
+  color: var(--texto-claro);
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; margin: 0; padding: 0; }
+img { max-width: 100%; display: block; }
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---------- TOPO / HEADER ---------- */
+.topo-aviso {
+  background: var(--verde-escuro);
+  color: #dfffdf;
+  font-size: 13px;
+  padding: 6px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header {
+  background: linear-gradient(180deg, #3f8f3f 0%, #357a35 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.logo {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 800;
+  line-height: 1;
+  font-size: 20px;
+  color: #1e2733;
+}
+.logo span { display: block; color: #1e2733; }
+
+.header-frase {
+  color: #eafcea;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.busca {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 20px;
+  padding: 8px 14px;
+  min-width: 280px;
+  gap: 8px;
+}
+.busca input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 14px;
+}
+
+.header-acoes {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  color: #eafcea;
+}
+.header-acoes .item { display: flex; align-items: center; gap: 6px; font-weight: 600; cursor: pointer; }
+.carrinho-badge {
+  position: relative;
+}
+.carrinho-badge .qtd {
+  position: absolute;
+  top: -8px; right: -10px;
+  background: var(--laranja);
+  color: #fff;
+  font-size: 11px;
+  border-radius: 50%;
+  width: 18px; height: 18px;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* ---------- NAV CATEGORIAS ---------- */
+.nav-categorias {
+  background: #245c24;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 10px 24px;
+  font-size: 14px;
+  color: #eafcea;
+  flex-wrap: wrap;
+}
+.nav-categorias .ver-todas { font-weight: 700; display: flex; align-items: center; gap: 6px; }
+
+/* ---------- HERO / BANNER ---------- */
+.hero-banner {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px;
+  background: #000;
+}
+.hero-banner img { width: 100%; height: 260px; object-fit: cover; }
+.hero-banner .destaque {
+  background: linear-gradient(135deg, #2f7a2f, #4fae4f);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px;
+}
+.hero-banner .destaque h2 {
+  font-size: 30px;
+  margin: 0 0 6px;
+}
+.hero-banner .destaque p { margin: 0; opacity: .9; }
+
+/* ---------- SEÇÕES / TÍTULOS ---------- */
+.secao { padding: 26px 24px; }
+.secao h3 { margin: 0 0 16px; font-size: 20px; }
+
+/* ---------- GRID DE PRODUTOS ---------- */
+.grid-produtos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.card-produto {
+  background: var(--fundo-card);
+  color: var(--texto-escuro);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 4px rgba(0,0,0,.25);
+}
+.card-produto .imagem {
+  height: 140px;
+  display: flex; align-items: center; justify-content: center;
+  background: #fafafa;
+  padding: 10px;
+}
+.card-produto .imagem img { max-height: 120px; object-fit: contain; }
+.card-produto .info { padding: 10px 12px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
+.card-produto .nome { font-size: 13px; font-weight: 600; min-height: 34px; }
+.card-produto .preco-antigo { font-size: 12px; color: var(--cinza); text-decoration: line-through; }
+.card-produto .preco-atual { font-size: 18px; font-weight: 800; color: var(--texto-escuro); }
+.card-produto .desconto {
+  align-self: flex-start;
+  background: var(--verde);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+.card-produto .unidade { font-size: 11px; color: var(--cinza); }
+.btn-comprar {
+  margin: 0 12px 12px;
+  background: var(--verde);
+  color: #fff;
+  border: none;
+  padding: 10px;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+}
+.btn-comprar:hover { background: var(--verde-escuro); }
+
+/* ---------- FOOTER ---------- */
+.footer {
+  background: #000;
+  color: #cfe;
+  text-align: center;
+  padding: 14px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* ---------- FORMULÁRIOS (login / cadastro / endereço) ---------- */
+.pagina-formulario {
+  min-height: 100vh;
+  display: flex;
+  align-items: stretch;
+}
+.formulario-lateral {
+  flex: 1;
+  background: var(--fundo-escuro);
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+.formulario-marca {
+  flex: 1;
+  background: #f4f1e9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+  color: #234;
+}
+.formulario-marca img { max-width: 260px; margin-bottom: 20px; }
+
+.cartao-form {
+  background: var(--fundo-escuro);
+  color: #f5f5f5;
+  width: 100%;
+  max-width: 420px;
+}
+.cartao-form h2 { margin-bottom: 4px; }
+.cartao-form .aviso-obrigatorio { font-size: 12px; color: #9aa; margin-bottom: 20px; }
+.campo { margin-bottom: 18px; }
+.campo label { display: block; font-size: 13px; margin-bottom: 6px; }
+.campo input, .campo select {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #556;
+  color: #fff;
+  padding: 8px 2px;
+  font-size: 14px;
+  outline: none;
+}
+.linha-dupla { display: flex; gap: 16px; }
+.linha-dupla .campo { flex: 1; }
+
+.btn-primario {
+  background: var(--verde);
+  color: #fff;
+  border: none;
+  padding: 12px 30px;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+}
+.btn-primario:hover { background: var(--verde-escuro); }
+.link-secundario { color: var(--laranja); font-weight: 600; }
+
+.mensagem-erro { color: #ff6b6b; font-size: 13px; margin-top: 10px; min-height: 18px; }
+
+/* Faixa de segurança */
+.faixa-segura {
+  background: #000;
+  color: #bbb;
+  text-align: center;
+  padding: 12px;
+  font-size: 13px;
+}
+
+/* ---------- CARRINHO / CHECKOUT ---------- */
+.barra-navegacao-checkout {
+  background: #245c24;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  font-size: 13px;
+}
+.etapas-checkout {
+  display: flex;
+  gap: 14px;
+  padding: 16px 24px;
+  background: var(--fundo-escuro);
+}
+.etapa {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 13px;
+}
+.etapa.ativa { background: #fff; color: #222; }
+.etapa:not(.ativa) { background: #2c3644; color: #aaa; }
+
+.checkout-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  padding: 0 24px 30px;
+}
+.painel {
+  background: #232d3d;
+  border-radius: 8px;
+  padding: 18px;
+}
+.aviso-frete {
+  background: #f5a623;
+  color: #3a2a00;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+.item-carrinho {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px solid #333e4d;
+  padding: 14px 0;
+}
+.item-carrinho img { width: 50px; height: 50px; object-fit: contain; background: #fff; border-radius: 6px; }
+.item-carrinho .nome-item { flex: 1; font-size: 13px; }
+.qtd-controle {
+  display: flex; align-items: center; gap: 8px;
+  background: #1a2230; border-radius: 6px; padding: 4px 10px;
+}
+.qtd-controle button { background: none; border: none; color: #fff; font-size: 16px; cursor: pointer; }
+.preco-com-desconto { color: var(--verde); font-weight: 700; }
+.resumo-total .linha { display: flex; justify-content: space-between; padding: 6px 0; font-size: 14px; }
+.resumo-total .total { font-weight: 800; font-size: 16px; border-top: 1px solid #333e4d; margin-top: 8px; padding-top: 10px; }
+.economia { color: var(--verde); font-size: 13px; }
+
+/* ---------- RESPONSIVIDADE ---------- */
+@media (max-width: 900px) {
+  .hero-banner { grid-template-columns: 1fr; }
+  .checkout-layout { grid-template-columns: 1fr; }
+  .header { flex-direction: column; align-items: flex-start; }
+  .busca { width: 100%; }
+  .pagina-formulario { flex-direction: column; }
+}
+@media (max-width: 600px) {
+  .nav-categorias { overflow-x: auto; white-space: nowrap; }
+  .grid-produtos { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Admin - Dashboard - Market Gon</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<header class="admin-header">
+  <div class="logo">MARKET<br>GON</div>
+  <div class="breadcrumb"><a href="index.html">Home</a> › <a href="admin-produtos.html">Dados</a></div>
+  <div class="marca-central">🧺 MARKET GON</div>
+  <div class="usuario">👤 <span id="nome-usuario-admin">Henrique</span> adm ▾
+    <a href="#" onclick="sair()" style="margin-left:10px;color:#b00;">Sair</a>
+  </div>
+</header>
+
+<div class="admin-layout">
+  <aside class="admin-sidebar">
+    <div class="saudacao"><span class="avatar">👤</span> Olá, henrique</div>
+    <nav>
+      <a href="admin-dashboard.html" class="ativo">👤 Dashboard</a>
+      <a href="admin-produtos.html">📦 Produtos</a>
+      <a href="admin-dashboard.html">🛒 Pedidos</a>
+      <a href="admin-produtos.html">📊 Estoque</a>
+      <a href="admin-dashboard.html">📈 Analytics</a>
+      <a href="admin-dashboard.html">👥 Clientes</a>
+    </nav>
+  </aside>
+
+  <main class="admin-painel">
+    <div class="dashboard-metricas">
+      <div class="linha-metrica">
+        <div class="rotulo">pedidos feitos hoje</div>
+        <div class="valor" id="total-pedidos-hoje">#0</div>
+      </div>
+      <div class="linha-metrica">
+        <div class="rotulo">vendas feitas hoje</div>
+        <div class="valor" id="total-vendas-hoje">R$ 0,00</div>
+      </div>
+      <div class="linha-metrica">
+        <div class="rotulo">Produtos baixo</div>
+        <div class="valor" id="total-produtos-baixo">#0</div>
+      </div>
+    </div>
+
+    <div class="tabela-pedidos">
+      <h3>Pedido Recente</h3>
+      <table>
+        <thead>
+          <tr><th>Pedido</th><th>Cliente</th><th>Status</th><th>Valor</th></tr>
+        </thead>
+        <tbody id="corpo-pedidos-recentes"></tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+/* =========================================================
+   MARKET GON - Estilos da área administrativa
+========================================================= */
+:root {
+  --verde: #3f8f3f;
+  --verde-escuro: #2c6b2c;
+  --verde-painel: #2f6b3a;
+  --fundo-escuro: #1e2733;
+  --painel-lateral: #232d3d;
+  --laranja: #ff7a1a;
+  --texto-claro: #f5f5f5;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: var(--fundo-escuro);
+  color: var(--texto-claro);
+}
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; margin: 0; padding: 0; }
+
+/* ---------- HEADER ADMIN ---------- */
+.admin-header {
+  background: linear-gradient(180deg, #3f8f3f 0%, #357a35 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+}
+.admin-header .logo { font-weight: 800; font-family: Georgia, serif; }
+.admin-header .breadcrumb { display: flex; gap: 8px; font-size: 13px; color: #eafcea; }
+.admin-header .marca-central {
+  background: #fff;
+  color: #234;
+  padding: 6px 20px;
+  border-radius: 6px;
+  font-weight: 800;
+  display: flex; align-items: center; gap: 8px;
+}
+.admin-header .usuario { display: flex; align-items: center; gap: 8px; font-weight: 600; color: #17321e; background:#eafcea; padding:8px 14px; border-radius: 20px; }
+
+/* ---------- LAYOUT ---------- */
+.admin-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 20px;
+  padding: 24px;
+  align-items: start;
+}
+
+/* ---------- SIDEBAR ---------- */
+.admin-sidebar {
+  background: var(--painel-lateral);
+  border-radius: 8px;
+  padding: 20px;
+}
+.admin-sidebar .saudacao {
+  display: flex; align-items: center; gap: 10px;
+  padding-bottom: 16px; margin-bottom: 16px;
+  border-bottom: 1px solid #333e4d;
+  font-weight: 700;
+}
+.admin-sidebar .avatar {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: #6c63ff; display: flex; align-items: center; justify-content: center;
+}
+.admin-sidebar nav a {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #cfd6e0;
+  border-radius: 6px;
+}
+.admin-sidebar nav a:hover { background: #2c3644; }
+.admin-sidebar nav a.ativo { color: #6fd3ff; }
+
+/* ---------- PAINEL PRINCIPAL ---------- */
+.admin-painel {
+  background: var(--verde-painel);
+  border-radius: 8px;
+  padding: 24px;
+  min-height: 500px;
+}
+
+.dashboard-metricas {
+  background: #285c33;
+  border-radius: 6px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.dashboard-metricas .linha-metrica { margin-bottom: 14px; }
+.dashboard-metricas .rotulo { text-decoration: underline; font-weight: 700; font-size: 14px; }
+.dashboard-metricas .valor { font-size: 22px; font-weight: 800; margin-top: 4px; }
+
+.tabela-pedidos {
+  background: #285c33;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.tabela-pedidos h3 { text-align: center; padding: 14px; margin: 0; background: #245229; }
+.tabela-pedidos table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tabela-pedidos th, .tabela-pedidos td {
+  padding: 10px 16px;
+  text-align: center;
+  border-bottom: 1px solid #1f4526;
+}
+.tabela-pedidos th { font-weight: 700; }
+.status-finalizado { color: #b8f5c0; font-weight: 700; }
+.status-pendente { color: #ffe08a; font-weight: 700; }
+.status-pago { color: #9fd8ff; font-weight: 700; }
+
+/* ---------- PRODUTOS (admin) ---------- */
+.produtos-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.produtos-topo h2 { margin: 0; }
+.campo-busca-produto {
+  display: flex; align-items: center; gap: 8px;
+  background: #fff; border-radius: 20px; padding: 8px 16px; color: #333;
+  min-width: 260px;
+}
+.campo-busca-produto input { border: none; outline: none; flex: 1; }
+.link-adicionar { color: #cdf5d4; font-weight: 700; text-decoration: underline; cursor: pointer; }
+
+.grid-produtos-admin {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 18px;
+}
+.card-produto-admin {
+  background: #fff;
+  color: #222;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: 14px;
+}
+.card-produto-admin .imagem { height: 130px; display: flex; align-items: center; justify-content: center; padding: 10px; }
+.card-produto-admin .imagem img { max-height: 110px; object-fit: contain; }
+.card-produto-admin .nome { font-weight: 700; font-size: 14px; margin: 6px 0 2px; }
+.card-produto-admin .preco { font-size: 13px; margin-bottom: 2px; }
+.card-produto-admin .estoque { font-size: 12px; color: #666; margin-bottom: 10px; }
+.acoes-produto { display: flex; gap: 8px; justify-content: center; padding: 0 10px; }
+.btn-editar, .btn-excluir {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  flex: 1;
+}
+.btn-editar { background: var(--laranja); }
+.btn-excluir { background: var(--laranja); }
+.btn-editar:hover, .btn-excluir:hover { opacity: .85; }
+
+/* ---------- MODAL (produto) ---------- */
+.modal-fundo {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.6);
+  align-items: center; justify-content: center;
+  z-index: 50;
+}
+.modal-fundo.aberto { display: flex; }
+.modal-caixa {
+  background: #232d3d;
+  padding: 26px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 420px;
+}
+.modal-caixa h3 { margin-top: 0; }
+.modal-caixa .campo { margin-bottom: 14px; }
+.modal-caixa label { display: block; font-size: 13px; margin-bottom: 4px; }
+.modal-caixa input, .modal-caixa textarea, .modal-caixa select {
+  width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #444; background: #1a2230; color: #fff;
+}
+.modal-acoes { display: flex; gap: 10px; margin-top: 16px; }
+.modal-acoes button { flex: 1; padding: 10px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; }
+.modal-acoes .salvar { background: var(--verde); color: #fff; }
+.modal-acoes .cancelar { background: #444; color: #fff; }
+
+/* ---------- RESPONSIVO ---------- */
+@media (max-width: 900px) {
+  .admin-layout { grid-template-columns: 1fr; }
+  .admin-header { flex-direction: column; gap: 10px; align-items: flex-start; }
+}
