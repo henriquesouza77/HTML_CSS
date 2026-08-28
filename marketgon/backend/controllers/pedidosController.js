@@ -76,16 +76,47 @@ async function criarPedido(req, res) {
   }
 }
 
-// PUT /api/pedidos/:id (admin - atualizar status)
+// PUT /api/pedidos/:id (admin - atualizar status ou excluir se for Finalizado)
 async function atualizarPedido(req, res) {
+  const conexao = await pool.getConnection();
   try {
     const { status } = req.body;
-    const [resultado] = await pool.query('UPDATE pedidos SET status = ? WHERE id = ?', [status, req.params.id]);
-    if (resultado.affectedRows === 0) return res.status(404).json({ erro: 'Pedido não encontrado.' });
+    const { id } = req.params;
+
+    // Se o status for "Finalizado", apaga do banco de dados
+    if (status && status.toLowerCase() === 'finalizado') {
+      await conexao.beginTransaction();
+
+      // 1. Apaga os itens vinculados ao pedido
+      await conexao.query('DELETE FROM pedido_itens WHERE pedido_id = ?', [id]);
+      
+      // 2. Apaga o pedido principal
+      const [resultado] = await conexao.query('DELETE FROM pedidos WHERE id = ?', [id]);
+
+      await conexao.commit();
+      conexao.release();
+
+      if (resultado.affectedRows === 0) {
+        return res.status(404).json({ erro: 'Pedido não encontrado.' });
+      }
+
+      return res.json({ mensagem: 'Pedido finalizado e excluído com sucesso.' });
+    }
+
+    // Para outros status (Pendente, Pago, Em Rota), apenas atualiza
+    const [resultado] = await conexao.query('UPDATE pedidos SET status = ? WHERE id = ?', [status, id]);
+    conexao.release();
+
+    if (resultado.affectedRows === 0) {
+      return res.status(404).json({ erro: 'Pedido não encontrado.' });
+    }
+
     return res.json({ mensagem: 'Pedido atualizado com sucesso.' });
   } catch (erro) {
+    await conexao.rollback();
+    conexao.release();
     console.error(erro);
-    return res.status(500).json({ erro: 'Erro ao atualizar pedido.' });
+    return res.status(500).json({ erro: 'Erro ao processar pedido.' });
   }
 }
 

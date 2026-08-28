@@ -1,5 +1,4 @@
 // ---------- Proteção das páginas administrativas ----------
-// Qualquer página que inclua este script exige um usuário admin autenticado.
 (function protegerAdmin() {
   const token = localStorage.getItem('mg_token');
   const usuario = JSON.parse(localStorage.getItem('mg_usuario') || 'null');
@@ -24,6 +23,30 @@ function formatarPreco(valor) {
   return Number(valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 
+// ---------- FUNÇÃO PARA ALTERAR OU EXCLUIR O STATUS NO BANCO ----------
+async function alterarStatusPedido(idPedido, novoStatus) {
+  // Se for Finalizado, confirma a ação antes de deletar permanentemente
+  if (novoStatus.toLowerCase() === 'finalizado') {
+    const confirmou = confirm(`Atenção: Marcar o Pedido #${idPedido} como FINALIZADO irá excluí-lo permanentemente do sistema. Deseja continuar?`);
+    if (!confirmou) {
+      carregarDashboard(); // Reseta o select para o valor original se cancelar
+      return;
+    }
+  }
+
+  try {
+    await apiFetch(`/pedidos/${idPedido}`, {
+      method: 'PUT',
+      body: JSON.stringify({ status: novoStatus })
+    });
+
+    // Recarrega a dashboard para sumir com o pedido excluído e atualizar os totais
+    carregarDashboard();
+  } catch (erro) {
+    alert('Erro ao atualizar o status: ' + erro.message);
+  }
+}
+
 // ---------- DASHBOARD ----------
 async function carregarDashboard() {
   const corpoTabela = document.getElementById('corpo-pedidos-recentes');
@@ -35,13 +58,30 @@ async function carregarDashboard() {
       pedidos.reduce((soma, p) => soma + Number(p.valor_total), 0)
     );
 
+    const opcoesStatus = ['Pendente', 'Pago', 'Em Rota', 'Finalizado'];
+
     corpoTabela.innerHTML = '';
     pedidos.slice(0, 5).forEach((pedido) => {
       const tr = document.createElement('tr');
+      
+      // Monta as opções do menu suspenso marcando o status atual como selecionado
+      const optionsHtml = opcoesStatus.map(status => `
+        <option value="${status}" ${pedido.status?.toLowerCase() === status.toLowerCase() ? 'selected' : ''}>
+          ${status}
+        </option>
+      `).join('');
+
       tr.innerHTML = `
         <td>#${pedido.id}</td>
         <td>${pedido.cliente}</td>
-        <td class="status-${pedido.status.toLowerCase()}">${pedido.status}</td>
+        <td>
+          <select 
+            onchange="alterarStatusPedido(${pedido.id}, this.value)" 
+            style="padding: 4px 8px; border-radius: 4px; border: 1px solid #cbd5e1; cursor: pointer; font-size: 13px;"
+          >
+            ${optionsHtml}
+          </select>
+        </td>
         <td>${formatarPreco(pedido.valor_total)}</td>
       `;
       corpoTabela.appendChild(tr);
@@ -69,6 +109,7 @@ function abrirModalProduto(produto = null) {
   document.getElementById('campo-descricao').value = produto ? (produto.descricao || '') : '';
   document.getElementById('modal-produto').classList.add('aberto');
 }
+
 function fecharModalProduto() {
   document.getElementById('modal-produto').classList.remove('aberto');
 }
