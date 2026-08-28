@@ -1,6 +1,7 @@
-// Variáveis globais do Modal
+// Variáveis globais
 let produtoModalAtual = null;
 let quantidadeModalAtual = 1;
+let todosProdutos = [];
 
 // ---------- Carrinho ----------
 function obterCarrinho() {
@@ -91,7 +92,7 @@ function fecharModalProduto() {
   produtoModalAtual = null;
 }
 
-// ---------- Renderização de produtos ----------
+// ---------- Renderização e Filtro de produtos ----------
 function formatarPreco(valor) {
   return Number(valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
@@ -113,7 +114,6 @@ function criarCardProduto(produto) {
     <button class="btn-comprar">VER DETALHES</button>
   `;
 
-  // Clique no card ou botão abre o modal
   card.addEventListener('click', () => abrirModalProduto(produto));
   return card;
 }
@@ -122,13 +122,51 @@ async function carregarProdutos() {
   const grid = document.getElementById('grid-produtos');
   if (!grid) return;
   try {
-    const produtos = await apiFetch('/produtos');
-    grid.innerHTML = '';
-    produtos.forEach((produto) => grid.appendChild(criarCardProduto(produto)));
+    todosProdutos = await apiFetch('/produtos');
+    exibirProdutos(todosProdutos);
   } catch (erro) {
     grid.innerHTML = `<p>Não foi possível carregar os produtos agora.</p>`;
     console.error(erro);
   }
+}
+
+function exibirProdutos(lista) {
+  const grid = document.getElementById('grid-produtos');
+  if (!grid) return;
+  grid.innerHTML = '';
+
+  if (lista.length === 0) {
+    grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #64748b;">Nenhum produto encontrado nesta categoria.</p>';
+    return;
+  }
+
+  lista.forEach((produto) => grid.appendChild(criarCardProduto(produto)));
+}
+
+function filtrarCategoria(categoria) {
+  const titulo = document.getElementById('titulo-secao');
+  
+  if (!categoria) {
+    if (titulo) titulo.textContent = 'Ofertas para você';
+    exibirProdutos(todosProdutos);
+    return;
+  }
+
+  if (titulo) titulo.textContent = categoria.toUpperCase();
+
+  const filtrados = todosProdutos.filter((p) => {
+    const nome = p.nome.toLowerCase();
+    const desc = (p.descricao || '').toLowerCase();
+    const cat = (p.categoria_nome || '').toLowerCase();
+    
+    if (categoria === 'ofertas') {
+      return p.preco_promocional && Number(p.preco_promocional) < Number(p.preco);
+    }
+    
+    return nome.includes(categoria) || desc.includes(categoria) || cat.includes(categoria);
+  });
+
+  exibirProdutos(filtrados);
 }
 
 // ---------- Event Listeners ----------
@@ -136,7 +174,19 @@ document.addEventListener('DOMContentLoaded', () => {
   atualizarBadgeCarrinho();
   carregarProdutos();
 
-  // Controles do Modal de Produto (Mantenha os existentes)
+  // Campo de Busca em Tempo Real
+  document.getElementById('campo-busca')?.addEventListener('input', (e) => {
+    const termo = e.target.value.toLowerCase().trim();
+    const titulo = document.getElementById('titulo-secao');
+    if (titulo) titulo.textContent = termo ? `Resultados para "${termo}"` : 'Ofertas para você';
+    
+    const filtrados = todosProdutos.filter((p) => 
+      p.nome.toLowerCase().includes(termo) || (p.descricao || '').toLowerCase().includes(termo)
+    );
+    exibirProdutos(filtrados);
+  });
+
+  // Modal de Produto
   document.getElementById('btn-fechar-modal')?.addEventListener('click', fecharModalProduto);
   document.getElementById('modal-produto')?.addEventListener('click', (e) => {
     if (e.target.id === 'modal-produto') fecharModalProduto();
@@ -158,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Controle de Sessão no Header
+  // Sessão e Acesso Restrito
   const usuario = obterUsuarioLogado();
   const linkEntrar = document.getElementById('link-entrar');
   const linkCadastrar = document.querySelector('a[href="cadastro.html"]');
@@ -173,7 +223,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Trava do Carrinho para usuários deslogados
   const btnCarrinhoHeader = document.querySelector('.carrinho-badge');
   if (btnCarrinhoHeader) {
     btnCarrinhoHeader.addEventListener('click', (e) => {

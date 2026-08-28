@@ -14,10 +14,10 @@
 </div>
 
 <header class="header">
-  <div class="logo">MARKET<span>GON</span></div>
+  <div class="logo" onclick="filtrarCategoria('')" style="cursor:pointer;">MARKET<span>GON</span></div>
   <div class="busca">
     <span>🔍</span>
-    <input type="text" placeholder="O que está procurando?">
+    <input type="text" id="campo-busca" placeholder="O que está procurando?">
   </div>
   <div class="header-acoes" id="area-usuario">
     <a href="login.html" id="link-entrar" class="item">👤 Entrar ▾</a>
@@ -27,25 +27,24 @@
 </header>
 
 <nav class="nav-categorias">
-  <span class="ver-todas">☰ Ver todas as Categorias</span>
-  <a href="#">Marcas</a>
-  <a href="#">Ofertas</a>
-  <a href="#">Laticinios</a>
-  <a href="#">Frutas</a>
-  <a href="#">Bebidas</a>
-  <a href="#">Marcas</a>
+  <span class="ver-todas" style="cursor:pointer;" onclick="filtrarCategoria('')">☰ Ver todas as Categorias</span>
+  <a href="#" onclick="filtrarCategoria('ofertas'); return false;">Ofertas</a>
+  <a href="#" onclick="filtrarCategoria('laticinios'); return false;">Laticinios</a>
+  <a href="#" onclick="filtrarCategoria('frutas'); return false;">Frutas</a>
+  <a href="#" onclick="filtrarCategoria('bebidas'); return false;">Bebidas</a>
+  <a href="#" onclick="filtrarCategoria('limpeza'); return false;">Limpeza</a>
 </nav>
 
 <section class="hero-banner">
   <img src="assets/frutas frescas.jpg" alt="Frutas frescas">
   <div class="destaque">
     <img src="assets/logo.png" alt="market gon logo" class="hero-logo">
-      </div>
+  </div>
   <img src="assets/legumes.jpg" alt="Verduras frescas">
 </section>
 
 <section class="secao">
-  <h3>Ofertas para você</h3>
+  <h3 id="titulo-secao">Ofertas para você</h3>
   <div class="grid-produtos" id="grid-produtos">
     <p>Carregando produtos...</p>
   </div>
