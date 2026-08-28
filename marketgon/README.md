@@ -79,18 +79,6 @@ Senha: HGK1ll&r
    JWT_SECRET=troque_esta_chave_por_uma_bem_grande_e_aleatoria
    ```
 
-## 4. Instalar dependências
-
-Na raiz do projeto:
-
-```bash
-npm install
-```
-
-**Não tem permissão para rodar `npm`?** Sem problema: este projeto já é
-entregue com a pasta `node_modules/` incluída (dependências já instaladas).
-Você pode pular esta etapa e ir direto para o passo 5 usando apenas `node`.
-
 ## 5. Iniciar o backend
 
 Se você tem `npm` disponível:

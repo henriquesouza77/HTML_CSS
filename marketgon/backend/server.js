@@ -32,5 +32,5 @@ app.get('*', (req, res, next) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Servidor Market Gon rodando em http://localhost:${PORT}`);
+  console.log(`Servidor Market Gon rodando em http://localhost:${PORT}🚀🚀`);
 });

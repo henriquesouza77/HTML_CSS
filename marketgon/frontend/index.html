@@ -52,6 +52,45 @@
   </div>
 </section>
 
+<!-- Modal de Produto -->
+<div id="modal-produto" class="modal-overlay hidden">
+  <div class="modal-conteudo">
+    <button class="modal-fechar" id="btn-fechar-modal" aria-label="Fechar">&times;</button>
+    <div class="modal-body">
+      <div class="modal-imagem">
+        <img id="modal-img" src="" alt="Produto">
+      </div>
+      <div class="modal-detalhes">
+        <h3 id="modal-nome">Nome do Produto</h3>
+        <div class="modal-precos">
+          <span id="modal-preco-antigo" class="preco-antigo"></span>
+          <span id="modal-preco-atual" class="preco-atual"></span>
+          <span id="modal-desconto" class="desconto"></span>
+        </div>
+        
+        <div class="modal-quantidade">
+          <span>Quantidade:</span>
+          <div class="controle-qtd">
+            <button type="button" id="btn-qtd-menos">-</button>
+            <span id="qtd-modal">1</span>
+            <button type="button" id="btn-qtd-mais">+</button>
+          </div>
+        </div>
+
+        <button id="btn-modal-adicionar" class="btn-comprar-modal">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Notificação Toast -->
+<div id="toast" class="toast hidden">Produto adicionado ao carrinho!</div>
+
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
+
 <footer class="footer">
   🔒 Informações 100% seguras &nbsp;|&nbsp; © Market Gon - Sua Mercearia Online
 </footer>
