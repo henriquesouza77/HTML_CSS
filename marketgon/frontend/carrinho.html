@@ -1,62 +1,198 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Carrinho - Market Gon</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <title>Carrinho - Market Gon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="bg-checkout">
 
+<!-- Topo Checkout -->
 <div class="barra-navegacao-checkout">
   <a href="index.html">☰ Voltar para compras</a>
   <a href="endereco.html">Ir para os dados ›</a>
 </div>
 
-<header class="header">
-  <div class="logo">MARKET<span>GON</span></div>
-  <div class="header-frase" style="display:flex;gap:10px"><a href="index.html">Home</a> › <a href="#">Pedido</a></div>
+<!-- Header Principal -->
+<header class="header-checkout">
+  <div class="container-header-checkout">
+    <div class="logo">MARKET<span>GON</span></div>
+    <div class="header-frase">
+      <a href="index.html">Home</a> <span>›</span> <a href="#">Pedido</a>
+    </div>
+  </div>
 </header>
 
-<div class="etapas-checkout">
-  <div class="etapa ativa">🛒 Carrinho</div>
-  <div class="etapa">💳 Pagamento</div>
-  <div class="etapa">✅ Confirmação</div>
-</div>
-
-<div class="checkout-layout">
-  <div class="painel">
-    <div id="aviso-frete" class="aviso-frete">⚠ O valor mínimo de compra é R$30,00 sem contar o frete*</div>
-    <div style="display:flex;justify-content:space-between;align-items:center;">
-      <strong id="contagem-itens">0 Itens</strong>
-      <a href="index.html" class="link-secundario">+ Adicionar mais produtos</a>
+<!-- Barra de Etapas estilo Wireframe -->
+<div class="etapas-checkout-container">
+  <div class="etapas-checkout">
+    <div class="etapa ativa">
+      <span>🛒</span> Carrinho
     </div>
-    <div id="lista-itens"></div>
-    <a href="#" id="esvaziar-carrinho" style="color:#ff6b6b;display:inline-block;margin-top:14px;">Esvaziar carrinho 🗑</a>
-  </div>
-
-  <div class="painel">
-    <div class="campo" style="display:flex;gap:8px;margin-bottom:16px;">
-      <input type="text" placeholder="Insira seu cupom" style="flex:1;padding:8px;border-radius:6px;border:1px solid #444;background:#1a2230;color:#fff;">
-      <button class="btn-comprar" style="margin:0;padding:8px 16px;">Aplicar</button>
+    <div class="etapa-divisor">|</div>
+    <div class="etapa">
+      <span>💳</span> Pagamento
     </div>
-
-    <h4>Modo de entrega</h4>
-    <p style="font-size:13px;color:#9fd8ff;">Entrega tradicional <a href="#" class="link-secundario">Alterar</a></p>
-    <p style="font-size:13px;color:#ccc;">Rua São Paulo, 300 - Bairro Rio de Janeiro</p>
-    <button class="btn-primario" style="margin:10px 0 20px;">Definir data e hora</button>
-
-    <h4>Resumo total</h4>
-    <div class="resumo-total">
-      <div class="linha"><span>Pedidos</span><span id="valor-pedidos">R$ 0,00</span></div>
-      <div class="linha"><span>Frete</span><span id="valor-frete">R$ 0,00</span></div>
-      <div class="linha total"><span>Total a pagar</span><span id="valor-total">R$ 0,00</span></div>
-      <div class="linha economia"><span>✔ Você economizou</span><span>R$ 0,99</span></div>
+    <div class="etapa-divisor">|</div>
+    <div class="etapa">
+      <span>📋</span> Resumo
     </div>
-
-    <button id="ir-para-pagamento" class="btn-primario" style="margin-top:16px;">Ir para pagamento</button>
+    <div class="etapa-divisor">|</div>
+    <div class="etapa">
+      <span>✅</span> Conclusão
+    </div>
   </div>
 </div>
+
+<!-- Container Principal (Aproveita a tela cheia) -->
+<div class="container-checkout">
+  <div class="checkout-layout">
+    
+    <!-- COLUNA ESQUERDA: LISTA DE PRODUTOS -->
+    <div class="coluna-produtos">
+      
+      <!-- Aviso Frete Laranja -->
+      <div id="aviso-frete" class="aviso-frete">
+        <span>⚠️</span> O valor mínimo de compra é <strong>R$30,00</strong> sem contar com o frete*
+      </div>
+
+      <!-- Topo Lista -->
+      <div class="topo-lista-itens">
+        <h2 id="contagem-itens">2 Itens</h2>
+        <a href="index.html" class="link-adicionar">Adicionar mais produtos</a>
+      </div>
+
+      <!-- Cabeçalho da Tabela de Itens -->
+      <div class="tabela-cabecalho">
+        <span>Pedidos</span>
+        <span>Valor</span>
+        <span>Valor c/ desconto</span>
+        <span>Total</span>
+        <span></span>
+      </div>
+
+      <!-- Container dinâmico (onde o carrinho.js insere os produtos) -->
+      <div id="lista-itens" class="lista-itens"></div>
+
+      <!-- Botão Esvaziar -->
+      <div class="rodape-lista">
+        <a href="#" id="esvaziar-carrinho" class="btn-esvaziar">Esvaziar 🗑</a>
+      </div>
+    </div>
+
+    <!-- COLUNA DIREITA: CUPOM E RESUMO DE PAGAMENTO -->
+    <div class="coluna-resumo">
+      
+      <!-- Card Cupom de Desconto -->
+      <div class="card-checkout card-cupom">
+        <div class="cupom-header">
+          <span class="icone-porcentagem">%</span>
+          <span>Cupom de desconto</span>
+        </div>
+        <div class="campo-cupom">
+          <input type="text" placeholder="Insira seu cupom">
+          <button class="btn-aplicar">Aplicar</button>
+        </div>
+      </div>
+
+      <!-- Card Modo de Entrega + Resumo -->
+      <div class="card-checkout card-detalhes">
+        
+        <section class="secao-entrega">
+          <h4>Modo de entrega</h4>
+          <div class="linha-entrega-status">
+            <span class="status-verde">Entrega tradicional</span>
+            <a href="#" class="link-alterar">Alterar</a>
+          </div>
+          <p class="endereco-texto">Rua São Paulo, 300 - Bairro Rio de Janeiro</p>
+          <button class="btn-pill-secundario">Definir data e hora</button>
+        </section>
+
+        <hr class="divisor-card">
+
+        <section class="secao-resumo">
+          <h4>Resumo total</h4>
+          <div class="resumo-total">
+            <div class="linha">
+              <span>Pedidos</span>
+              <span id="valor-pedidos" class="valor-num">R$ 30,00</span>
+            </div>
+            <div class="linha">
+              <span>Frete</span>
+              <span id="valor-frete" class="valor-num">R$ 10,00</span>
+            </div>
+            <div class="linha total">
+              <span>Total a pagar</span>
+              <span id="valor-total" class="valor-num">R$ 40,00</span>
+            </div>
+          </div>
+
+          <!-- Box de Economia Destacado em Azul -->
+          <div class="box-economia">
+            <div class="linha-economia">
+              <span class="badge-porcentagem">%</span>
+              <span class="texto-blue">Você economizou</span>
+              <strong class="valor-blue">R$ 0,99</strong>
+            </div>
+            <div class="linha-sub-economia">
+              <span>Promoções ou cupons</span>
+              <span>R$ 0,99</span>
+            </div>
+          </div>
+
+          <button id="ir-para-pagamento" class="btn-pill-primario">Ir para pagamento</button>
+        </section>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal de Checkout -->
+<div id="modal-checkout" class="modal-overlay hidden">
+  <div class="modal-conteudo" style="max-width: 500px; padding: 24px;">
+    <button class="modal-fechar" onclick="document.getElementById('modal-checkout').classList.add('hidden')">&times;</button>
+    <h3 style="margin-top:0; color:#1e293b; border-bottom:1px solid #e2e8f0; padding-bottom:12px;">Finalizar Pedido</h3>
+
+    <!-- Etapa 1: Endereço -->
+    <div style="margin-bottom: 24px;">
+      <h4 style="margin-bottom: 12px; color:#334155;">1. Endereço de Entrega</h4>
+      <div id="lista-enderecos-modal" style="margin-bottom: 12px; max-height: 150px; overflow-y: auto;"></div>
+      
+      <button id="btn-exibir-form-endereco" class="btn-pill-secundario" style="width:100%; border:1px dashed #2e7d32; color:#2e7d32; background:transparent;">+ Adicionar Novo Endereço</button>
+      
+      <form id="form-novo-endereco-modal" class="hidden" style="background:#f8fafc; padding:16px; border-radius:6px; border:1px solid #e2e8f0; margin-top:12px;">
+        <input type="text" id="end-cep" placeholder="CEP*" required style="width:100%; margin-bottom:8px; padding:10px; border:1px solid #cbd5e1; border-radius:4px;">
+        <input type="text" id="end-rua" placeholder="Rua / Avenida*" required style="width:100%; margin-bottom:8px; padding:10px; border:1px solid #cbd5e1; border-radius:4px;">
+        <div style="display:flex; gap:8px; margin-bottom:12px;">
+          <input type="text" id="end-num" placeholder="Nº*" required style="width:30%; padding:10px; border:1px solid #cbd5e1; border-radius:4px;">
+          <input type="text" id="end-bairro" placeholder="Bairro*" required style="width:70%; padding:10px; border:1px solid #cbd5e1; border-radius:4px;">
+        </div>
+        <button type="button" id="btn-salvar-endereco-modal" class="btn-comprar-modal">Salvar Endereço</button>
+      </form>
+    </div>
+
+    <!-- Etapa 2: Pagamento -->
+    <div style="margin-bottom: 24px;">
+      <h4 style="margin-bottom: 12px; color:#334155;">2. Forma de Pagamento</h4>
+      <label style="display:flex; align-items:center; gap:8px; background:#f8fafc; padding:12px; border:1px solid #cbd5e1; border-radius:4px; margin-bottom:8px; cursor:pointer;">
+        <input type="radio" name="pagamento" value="pix" checked> PIX
+      </label>
+      <label style="display:flex; align-items:center; gap:8px; background:#f8fafc; padding:12px; border:1px solid #cbd5e1; border-radius:4px; margin-bottom:8px; cursor:pointer;">
+        <input type="radio" name="pagamento" value="cartao"> Cartão de Crédito
+      </label>
+      <label style="display:flex; align-items:center; gap:8px; background:#f8fafc; padding:12px; border:1px solid #cbd5e1; border-radius:4px; cursor:pointer;">
+        <input type="radio" name="pagamento" value="dinheiro"> Dinheiro na Entrega
+      </label>
+    </div>
+
+    <button id="btn-confirmar-pedido-modal" class="btn-comprar-modal" style="width:100%; padding:14px; font-size:16px;">Confirmar e Pagar</button>
+  </div>
+</div>
+
 
 <script src="js/api.js"></script>
 <script src="js/app.js"></script>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Minha Conta - Market Gon</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <title>Minha Conta - Market Gon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -13,31 +13,33 @@
   <div class="header-frase"><a href="index.html">← Voltar para a loja</a></div>
 </header>
 
-<div class="admin-layout" style="grid-template-columns:260px 1fr; padding:24px;">
-  <aside class="admin-sidebar" style="background:#232d3d;border-radius:8px;padding:20px;">
-    <div class="saudacao" style="display:flex;align-items:center;gap:10px;padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid #333e4d;font-weight:700;">
-      <span class="avatar">👤</span> <span id="saudacao-nome">Olá</span>
-    </div>
-    <nav>
-      <a href="conta.html" style="display:flex;gap:12px;padding:12px 8px;color:#6fd3ff;">📄 Dados</a>
-      <a href="endereco.html" style="display:flex;gap:12px;padding:12px 8px;color:#cfd6e0;">📍 Endereços cadastrados</a>
-      <a href="carrinho.html" style="display:flex;gap:12px;padding:12px 8px;color:#cfd6e0;">🛒 Meus pedidos</a>
-      <a href="#" onclick="sairCliente()" style="display:flex;gap:12px;padding:12px 8px;color:#ff8a8a;">🚪 Sair</a>
-    </nav>
-  </aside>
+<div class="pagina-painel-wrapper">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="saudacao">
+        <span class="avatar">👤</span> <span id="saudacao-nome">Olá</span>
+      </div>
+      <nav>
+        <a href="conta.html" class="ativo">📄 Dados</a>
+        <a href="endereco.html">📍 Endereços cadastrados</a>
+        <a href="carrinho.html">🛒 Meus pedidos</a>
+        <a href="#" onclick="sairCliente()" style="color: #ef4444;">🚪 Sair</a>
+      </nav>
+    </aside>
 
-  <main class="painel" style="background:#232d3d;border-radius:8px;padding:24px;">
-    <h2>Meus dados</h2>
-    <div class="campo">
-      <label>Nome</label>
-      <input type="text" id="dado-nome" disabled>
-    </div>
-    <div class="campo">
-      <label>Email</label>
-      <input type="text" id="dado-email" disabled>
-    </div>
-    <p style="color:#9aa;font-size:13px;">Para alterar seus dados de cadastro, entre em contato com o suporte.</p>
-  </main>
+    <main class="painel">
+      <h2>Meus dados</h2>
+      <div class="campo">
+        <label>Nome</label>
+        <input type="text" id="dado-nome" class="input-underline" disabled>
+      </div>
+      <div class="campo" style="margin-top: 20px;">
+        <label>Email</label>
+        <input type="text" id="dado-email" class="input-underline" disabled>
+      </div>
+      <p style="color:#64748b; font-size:13px; margin-top: 24px;">Para alterar seus dados de cadastro, entre em contato com o suporte.</p>
+    </main>
+  </div>
 </div>
 
 <script>

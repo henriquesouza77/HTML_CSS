@@ -1,43 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Admin - Produtos - Market Gon</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="css/admin.css">
+  <meta charset="UTF-8">
+  <title>Admin - Produtos - Market Gon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
 
 <header class="admin-header">
-  <div class="logo">MARKET<br>GON</div>
-  <div class="breadcrumb"><a href="index.html">Home</a> › <a href="admin-produtos.html">Dados</a></div>
-  <div class="marca-central">🧺 MARKET GON</div>
-  <div class="usuario">👤 <span id="nome-usuario-admin">Henrique</span> adm ▾
-    <a href="#" onclick="sair()" style="margin-left:10px;color:#b00;">Sair</a>
+  <div class="header-esquerda">
+    <div class="logo">MARKET<br>GON</div>
+    <div class="breadcrumb"><a href="index.html">Home</a> › <a href="admin-produtos.html">Dados</a></div>
+  </div>
+  
+  <div class="marca-central">
+    <img src="assets/logo.png" alt="Market Gon Logo">
+  </div>
+  
+  <div class="usuario">
+    <span class="icone-user">👤</span> <span id="nome-usuario-admin">Henrique</span> adm ▾
+    <a href="#" onclick="sair()" class="btn-sair">(Sair)</a>
   </div>
 </header>
 
 <div class="admin-layout">
   <aside class="admin-sidebar">
-    <div class="saudacao"><span class="avatar">👤</span> Olá, henrique</div>
+    <div class="saudacao">
+      <div class="avatar-circle">👤</div>
+      <span>Olá, henrique</span>
+    </div>
     <nav>
-      <a href="admin-dashboard.html">👤 Dashboard</a>
-      <a href="admin-produtos.html" class="ativo">📦 Produtos</a>
-      <a href="admin-dashboard.html">🛒 Pedidos</a>
-      <a href="admin-produtos.html">📊 Estoque</a>
-      <a href="admin-dashboard.html">📈 Analytics</a>
-      <a href="admin-dashboard.html">👥 Clientes</a>
+      <a href="admin-dashboard.html"><span class="icone">👤</span> Dashboard</a>
+      <a href="admin-produtos.html" class="ativo"><span class="icone">📦</span> Produtos</a>
+      <a href="admin-dashboard.html"><span class="icone">🛒</span> Pedidos</a>
+      <a href="admin-produtos.html"><span class="icone">📊</span> Estoque</a>
+      <a href="admin-dashboard.html"><span class="icone">📈</span> Analytics</a>
+      <a href="admin-dashboard.html"><span class="icone">👥</span> Clientes</a>
     </nav>
   </aside>
 
   <main class="admin-painel">
-    <div class="produtos-topo">
+    <div class="produtos-header-bar">
       <h2>Produtos</h2>
-      <div class="campo-busca-produto">
+      <div class="campo-busca-wire">
         <input type="text" id="campo-busca-produto" placeholder="Pesquisar produto">
         <span>🔍</span>
       </div>
-      <a href="#" class="link-adicionar" onclick="abrirModalProduto(); return false;">+ Adicionar novo Produto</a>
+      <a href="#" class="link-adicionar-wire" onclick="abrirModalProduto(); return false;">+ Adicionar novo Produto</a>
     </div>
 
     <div class="grid-produtos-admin" id="grid-produtos-admin"></div>
@@ -57,22 +67,22 @@
         <label>Descrição</label>
         <textarea id="campo-descricao" rows="2"></textarea>
       </div>
-      <div class="linha-dupla" style="display:flex;gap:10px;">
-        <div class="campo" style="flex:1">
+      <div class="linha-dupla">
+        <div class="campo">
           <label>Preço (R$)</label>
           <input type="number" step="0.01" id="campo-preco" required>
         </div>
-        <div class="campo" style="flex:1">
+        <div class="campo">
           <label>Preço promocional (R$)</label>
           <input type="number" step="0.01" id="campo-preco-promo">
         </div>
       </div>
-      <div class="linha-dupla" style="display:flex;gap:10px;">
-        <div class="campo" style="flex:1">
+      <div class="linha-dupla">
+        <div class="campo">
           <label>Estoque</label>
           <input type="number" id="campo-estoque" required>
         </div>
-        <div class="campo" style="flex:1">
+        <div class="campo">
           <label>Imagem (arquivo em /assets)</label>
           <input type="text" id="campo-imagem" placeholder="ex: arroz.jpg">
         </div>

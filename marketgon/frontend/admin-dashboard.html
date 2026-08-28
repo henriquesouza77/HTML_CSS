@@ -1,59 +1,82 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Admin - Dashboard - Market Gon</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="css/admin.css">
+  <meta charset="UTF-8">
+  <title>Admin - Dashboard - Market Gon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
 
 <header class="admin-header">
-  <div class="logo">MARKET<br>GON</div>
-  <div class="breadcrumb"><a href="index.html">Home</a> › <a href="admin-produtos.html">Dados</a></div>
-  <div class="marca-central">🧺 MARKET GON</div>
-  <div class="usuario">👤 <span id="nome-usuario-admin">Henrique</span> adm ▾
-    <a href="#" onclick="sair()" style="margin-left:10px;color:#b00;">Sair</a>
+  <div class="header-esquerda">
+    <div class="logo">MARKET<br>GON</div>
+    <div class="breadcrumb"><a href="index.html">Home</a> › <a href="admin-produtos.html">Dados</a></div>
+  </div>
+  
+  <div class="marca-central">
+    <img src="assets/logo.png" alt="Market Gon Logo">
+  </div>
+  
+  <div class="usuario">
+    <span class="icone-user">👤</span> <span id="nome-usuario-admin">Henrique</span> adm ▾
+    <a href="#" onclick="sair()" class="btn-sair">(Sair)</a>
   </div>
 </header>
 
 <div class="admin-layout">
   <aside class="admin-sidebar">
-    <div class="saudacao"><span class="avatar">👤</span> Olá, henrique</div>
+    <div class="saudacao">
+      <div class="avatar-circle">👤</div>
+      <span>Olá, henrique</span>
+    </div>
     <nav>
-      <a href="admin-dashboard.html" class="ativo">👤 Dashboard</a>
-      <a href="admin-produtos.html">📦 Produtos</a>
-      <a href="admin-dashboard.html">🛒 Pedidos</a>
-      <a href="admin-produtos.html">📊 Estoque</a>
-      <a href="admin-dashboard.html">📈 Analytics</a>
-      <a href="admin-dashboard.html">👥 Clientes</a>
+      <a href="admin-dashboard.html" class="ativo"><span class="icone">👤</span> Dashboard</a>
+      <a href="admin-produtos.html"><span class="icone">📦</span> Produtos</a>
+      <a href="admin-dashboard.html"><span class="icone">🛒</span> Pedidos</a>
+      <a href="admin-produtos.html"><span class="icone">📊</span> Estoque</a>
+      <a href="admin-dashboard.html"><span class="icone">📈</span> Analytics</a>
+      <a href="admin-dashboard.html"><span class="icone">👥</span> Clientes</a>
     </nav>
   </aside>
 
   <main class="admin-painel">
-    <div class="dashboard-metricas">
-      <div class="linha-metrica">
-        <div class="rotulo">pedidos feitos hoje</div>
-        <div class="valor" id="total-pedidos-hoje">#0</div>
+    <div class="dashboard-container">
+      
+      <!-- Caixa de Métricas -->
+      <div class="dashboard-metricas-box">
+        <div class="linha-metrica-wire">
+          <span class="rotulo">pedidos feitos hoje</span>
+          <div class="valor" id="total-pedidos-hoje">#0</div>
+        </div>
+        <div class="linha-metrica-wire">
+          <span class="rotulo">vendas feitas hoje</span>
+          <div class="valor" id="total-vendas-hoje">R$ 0,00</div>
+        </div>
+        <div class="linha-metrica-wire">
+          <span class="rotulo">Produtos baixo</span>
+          <div class="valor" id="total-produtos-baixo">#0</div>
+        </div>
       </div>
-      <div class="linha-metrica">
-        <div class="rotulo">vendas feitas hoje</div>
-        <div class="valor" id="total-vendas-hoje">R$ 0,00</div>
-      </div>
-      <div class="linha-metrica">
-        <div class="rotulo">Produtos baixo</div>
-        <div class="valor" id="total-produtos-baixo">#0</div>
-      </div>
-    </div>
 
-    <div class="tabela-pedidos">
-      <h3>Pedido Recente</h3>
-      <table>
-        <thead>
-          <tr><th>Pedido</th><th>Cliente</th><th>Status</th><th>Valor</th></tr>
-        </thead>
-        <tbody id="corpo-pedidos-recentes"></tbody>
-      </table>
+      <!-- Tabela de Pedidos Recentes -->
+      <div class="tabela-pedidos-box">
+        <h3>Pedido Recente</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Pedido</th>
+              <th>Cliente</th>
+              <th>Status</th>
+              <th>Valor</th>
+            </tr>
+          </thead>
+          <tbody id="corpo-pedidos-recentes">
+            <!-- Dados preenchidos via JS -->
+          </tbody>
+        </table>
+      </div>
+
     </div>
   </main>
 </div>

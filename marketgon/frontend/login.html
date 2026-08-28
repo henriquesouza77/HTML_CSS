@@ -1,46 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Entrar - Market Gon</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <title>Entrar - Market Gon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="bg-cadastro">
 
-<header class="header">
-  <div class="logo">MARKET<span>GON</span></div>
-  <div class="header-frase">"Receba no conforto de casa"</div>
-</header>
+<div class="pagina-cadastro-wrapper">
+  <div class="pagina-cadastro-container">
+    
+    <!-- Lado Esquerdo: Logo Grande e Frase -->
+    <div class="cadastro-marca">
+      <img src="assets/logo.png" alt="Market Gon Logo" class="logo-cadastro-grande">
+      <p class="frase-cadastro">"Acesse sua conta e receba ofertas imbatíveis do MARKET GON"</p>
+    </div>
 
-<div class="pagina-formulario">
-  <div class="formulario-lateral">
-    <div class="cartao-form">
-      <h2>Entrar na sua conta</h2>
-      <p class="aviso-obrigatorio">Os campos marcados com (*) são obrigatórios</p>
+    <!-- Lado Direito: Formulário no formato do Wireframe -->
+    <div class="cadastro-card">
+      <div class="cadastro-header">
+        <h2>Entrar no <span class="destaque-logo">MARKET GON</span></h2>
+        <div class="linha-divisoria"></div>
+        <p class="aviso-obrigatorio">Os campos marcados com (*) são obrigatórios</p>
+      </div>
+
       <form id="form-login">
         <div class="campo">
           <label for="email">Email*</label>
-          <input type="email" id="email" required>
+          <input type="email" id="email" class="input-underline" required>
         </div>
         <div class="campo">
           <label for="senha">Senha*</label>
-          <input type="password" id="senha" required>
+          <input type="password" id="senha" class="input-underline" required>
         </div>
-        <button type="submit" class="btn-primario">Entrar</button>
+
+        <div class="area-botao">
+          <button type="submit" class="btn-avancar">Entrar</button>
+        </div>
         <p id="mensagem-erro" class="mensagem-erro"></p>
       </form>
-      <p>Não tem conta? <a href="cadastro.html" class="link-secundario">Cadastre-se</a></p>
+
+      <div class="rodape-card-link">
+        <p>Não tem conta? <a href="cadastro.html" class="link-cadastro-switch">Cadastre-se</a></p>
+      </div>
     </div>
-  </div>
-  <div class="formulario-marca">
-    <img src="assets/marketgon.svg" alt="Market Gon">
-    <h2>MARKET GON</h2>
-    <p>"Cadastre-se e receba ofertas imbatíveis do MARKET GON"</p>
+
   </div>
 </div>
-
-<div class="faixa-segura">🔒 Informações 100% seguras</div>
 
 <script src="js/api.js"></script>
 <script src="js/login.js"></script>

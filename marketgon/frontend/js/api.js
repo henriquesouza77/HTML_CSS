@@ -30,3 +30,12 @@ async function apiFetch(caminho, opcoes = {}) {
   }
   return dados;
 }
+function obterUsuarioLogado() {
+  return JSON.parse(localStorage.getItem('mg_usuario') || 'null');
+}
+
+function efetuarLogout() {
+  localStorage.removeItem('mg_token');
+  localStorage.removeItem('mg_usuario');
+  window.location.reload();
+}

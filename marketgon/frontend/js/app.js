@@ -136,25 +136,21 @@ document.addEventListener('DOMContentLoaded', () => {
   atualizarBadgeCarrinho();
   carregarProdutos();
 
-  // Controles do Modal
+  // Controles do Modal de Produto (Mantenha os existentes)
   document.getElementById('btn-fechar-modal')?.addEventListener('click', fecharModalProduto);
-  
   document.getElementById('modal-produto')?.addEventListener('click', (e) => {
     if (e.target.id === 'modal-produto') fecharModalProduto();
   });
-
   document.getElementById('btn-qtd-mais')?.addEventListener('click', () => {
     quantidadeModalAtual++;
     document.getElementById('qtd-modal').textContent = quantidadeModalAtual;
   });
-
   document.getElementById('btn-qtd-menos')?.addEventListener('click', () => {
     if (quantidadeModalAtual > 1) {
       quantidadeModalAtual--;
       document.getElementById('qtd-modal').textContent = quantidadeModalAtual;
     }
   });
-
   document.getElementById('btn-modal-adicionar')?.addEventListener('click', () => {
     if (produtoModalAtual) {
       adicionarAoCarrinho(produtoModalAtual, quantidadeModalAtual);
@@ -162,16 +158,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Header: usuário
+  // Controle de Sessão no Header
+  const usuario = obterUsuarioLogado();
   const linkEntrar = document.getElementById('link-entrar');
-  const usuario = JSON.parse(localStorage.getItem('mg_usuario') || 'null');
-  if (linkEntrar && usuario) {
-    if (usuario.tipo === 'admin') {
-      linkEntrar.href = 'admin-dashboard.html';
-      linkEntrar.textContent = `👤 ${usuario.nome} (admin) ▾`;
-    } else {
-      linkEntrar.href = 'conta.html';
-      linkEntrar.textContent = `👤 ${usuario.nome} ▾`;
+  const linkCadastrar = document.querySelector('a[href="cadastro.html"]');
+  
+  if (usuario) {
+    if (linkCadastrar) linkCadastrar.style.display = 'none';
+    if (linkEntrar) {
+      const painel = usuario.tipo === 'admin' ? 'admin-dashboard.html' : 'conta.html';
+      const tagAdmin = usuario.tipo === 'admin' ? ' (admin)' : '';
+      linkEntrar.href = painel;
+      linkEntrar.innerHTML = `👤 ${usuario.nome}${tagAdmin} ▾ <a href="#" onclick="efetuarLogout(); return false;" style="font-size:12px; color:#ff6b2b; margin-left:6px; text-decoration:underline;">(Sair)</a>`;
     }
+  }
+
+  // Trava do Carrinho para usuários deslogados
+  const btnCarrinhoHeader = document.querySelector('.carrinho-badge');
+  if (btnCarrinhoHeader) {
+    btnCarrinhoHeader.addEventListener('click', (e) => {
+      if (!usuario) {
+        e.preventDefault();
+        document.getElementById('modal-login-requerido').classList.remove('hidden');
+      }
+    });
   }
 });

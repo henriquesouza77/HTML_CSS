@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Market Gon - Sua Mercearia Online</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <title>Market Gon - Sua Mercearia Online</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -39,9 +39,8 @@
 <section class="hero-banner">
   <img src="assets/frutas frescas.jpg" alt="Frutas frescas">
   <div class="destaque">
-    <h2>Produtos fresquinhos</h2>
-    <p>como se você mesmo tivesse escolhido!</p>
-  </div>
+    <img src="assets/logo.png" alt="market gon logo" class="hero-logo">
+      </div>
   <img src="assets/legumes.jpg" alt="Verduras frescas">
 </section>
 
@@ -52,7 +51,7 @@
   </div>
 </section>
 
-<!-- Modal de Produto -->
+<!-- Modal de Detalhes do Produto -->
 <div id="modal-produto" class="modal-overlay hidden">
   <div class="modal-conteudo">
     <button class="modal-fechar" id="btn-fechar-modal" aria-label="Fechar">&times;</button>
@@ -83,13 +82,23 @@
   </div>
 </div>
 
+<!-- Modal: Login Necessário -->
+<div id="modal-login-requerido" class="modal-overlay hidden">
+  <div class="modal-conteudo modal-pequeno">
+    <button class="modal-fechar" onclick="document.getElementById('modal-login-requerido').classList.add('hidden')">&times;</button>
+    <div style="padding: 20px; text-align: center;">
+      <h3 style="margin-top:0; color:#1e293b;">Acesso Restrito</h3>
+      <p style="color:#64748b; margin-bottom: 24px;">Você precisa estar logado para acessar o carrinho e finalizar suas compras.</p>
+      <div style="display:flex; gap:10px;">
+        <a href="login.html" class="btn-comprar-modal" style="flex:1; text-align:center;">Fazer Login</a>
+        <a href="cadastro.html" class="btn-pill-secundario" style="flex:1; text-align:center;">Cadastrar</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Notificação Toast -->
 <div id="toast" class="toast hidden">Produto adicionado ao carrinho!</div>
-
-<script src="js/api.js"></script>
-<script src="js/app.js"></script>
-</body>
-</html>
 
 <footer class="footer">
   🔒 Informações 100% seguras &nbsp;|&nbsp; © Market Gon - Sua Mercearia Online
