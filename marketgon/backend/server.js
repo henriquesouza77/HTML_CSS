@@ -21,8 +21,7 @@ app.use('/api/pedidos', pedidosRoutes);
 const frontendPath = path.join(__dirname, '..', 'frontend');
 app.use(express.static(frontendPath));
 
-// Rota curinga simples: qualquer rota não-API que não seja um arquivo existente
-// cai na landing page (o controle de acesso ao admin é feito no próprio admin.js)
+// Rota curinga
 app.get('*', (req, res, next) => {
   if (req.path.startsWith('/api')) return next();
   res.sendFile(path.join(frontendPath, 'index.html'), (err) => {
