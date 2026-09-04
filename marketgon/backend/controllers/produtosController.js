@@ -79,12 +79,34 @@ async function atualizarProduto(req, res) {
 
 // DELETE /api/produtos/:id (admin)
 async function excluirProduto(req, res) {
+  const { id } = req.params;
+
   try {
-    const [resultado] = await pool.query('DELETE FROM produtos WHERE id = ?', [req.params.id]);
-    if (resultado.affectedRows === 0) return res.status(404).json({ erro: 'Produto não encontrado.' });
+    // 1. Tenta excluir permanentemente do banco
+    const [resultado] = await pool.query('DELETE FROM produtos WHERE id = ?', [id]);
+
+    if (resultado.affectedRows === 0) {
+      return res.status(404).json({ erro: 'Produto não encontrado.' });
+    }
+
     return res.json({ mensagem: 'Produto excluído com sucesso.' });
+
   } catch (erro) {
-    console.error(erro);
+    // 2. Se falhar por ter vendas vinculadas (Foreign Key constraint - ER_ROW_IS_REFERENCED_2 / 1451)
+    if (erro.code === 'ER_ROW_IS_REFERENCED_2' || erro.errno === 1451) {
+      try {
+        // Marca o produto como inativo (ativo = 0) em vez de apagar
+        await pool.query('UPDATE produtos SET ativo = 0 WHERE id = ?', [id]);
+        return res.json({ 
+          mensagem: 'O produto possui histórico de vendas e foi desativado do catálogo para preservar os pedidos.' 
+        });
+      } catch (errSoft) {
+        console.error('Erro ao desativar produto:', errSoft);
+        return res.status(500).json({ erro: 'Erro ao desativar o produto.' });
+      }
+    }
+
+    console.error('Erro ao excluir produto:', erro);
     return res.status(500).json({ erro: 'Erro ao excluir produto.' });
   }
 }

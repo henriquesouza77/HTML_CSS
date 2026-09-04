@@ -2,108 +2,550 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Market Gon - Sua Mercearia Online</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Market Gon - Sua mercearia online">
+  <title>Market Gon - Sua Mercearia Online</title>
+
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
+<!-- =====================================================
+     BARRA SUPERIOR
+===================================================== -->
 <div class="topo-aviso">
   <span>Market Gon</span>
-  <span class="header-frase">"Receba no conforto de casa"</span>
+
+  <span class="header-frase">
+    "Receba no conforto de casa"
+  </span>
 </div>
 
+
+<!-- =====================================================
+     HEADER PRINCIPAL
+===================================================== -->
 <header class="header">
-  <div class="logo" onclick="filtrarCategoria('')" style="cursor:pointer;">MARKET<span>GON</span></div>
+
+  <div
+    class="logo"
+    onclick="filtrarCategoria('')"
+    style="cursor:pointer;"
+  >
+    MARKET<span>GON</span>
+  </div>
+
   <div class="busca">
-    <span>🔍</span>
-    <input type="text" id="campo-busca" placeholder="O que está procurando?">
+    <span class="icone-busca">⌕</span>
+
+    <input
+      type="text"
+      id="campo-busca"
+      placeholder="O que está procurando?"
+      autocomplete="off"
+    >
   </div>
+
   <div class="header-acoes" id="area-usuario">
-    <a href="login.html" id="link-entrar" class="item">👤 Entrar ▾</a>
-    <a href="cadastro.html" class="item">Cadastre-se</a>
-    <a href="carrinho.html" class="item carrinho-badge">🛒 <span class="qtd">0</span></a>
+
+    <a href="login.html" id="link-entrar" class="item">
+      <span class="icone-usuario">♙</span>
+      <span>Entrar</span>
+      <small>▾</small>
+    </a>
+
+    <a href="cadastro.html" class="item item-cadastro">
+      Cadastre-se
+    </a>
+
+    <a href="carrinho.html" class="item carrinho-badge">
+      <span class="icone-carrinho">🛒</span>
+      <span class="texto-carrinho">Carrinho</span>
+      <span class="qtd">0</span>
+    </a>
+
   </div>
+
 </header>
 
+
+<!-- =====================================================
+     CATEGORIAS
+===================================================== -->
 <nav class="nav-categorias">
-  <span class="ver-todas" style="cursor:pointer;" onclick="filtrarCategoria('')">☰ Ver todas as Categorias</span>
-  <a href="#" onclick="filtrarCategoria('ofertas'); return false;">Ofertas</a>
-  <a href="#" onclick="filtrarCategoria('laticinios'); return false;">Laticinios</a>
-  <a href="#" onclick="filtrarCategoria('frutas'); return false;">Frutas</a>
-  <a href="#" onclick="filtrarCategoria('bebidas'); return false;">Bebidas</a>
-  <a href="#" onclick="filtrarCategoria('limpeza'); return false;">Limpeza</a>
+
+  <span
+    class="ver-todas"
+    onclick="filtrarCategoria('')"
+    style="cursor:pointer;"
+  >
+    ☰ <span>Ver todas as Categorias</span>
+  </span>
+
+  <a href="#" onclick="filtrarCategoria('ofertas'); return false;">
+    🏷 Ofertas
+  </a>
+
+  <a href="#" onclick="filtrarCategoria('laticinios'); return false;">
+    🥛 Laticínios
+  </a>
+
+  <a href="#" onclick="filtrarCategoria('frutas'); return false;">
+    🍎 Frutas
+  </a>
+
+  <a href="#" onclick="filtrarCategoria('bebidas'); return false;">
+    🥤 Bebidas
+  </a>
+
+  <a href="#" onclick="filtrarCategoria('limpeza'); return false;">
+    🧹 Limpeza
+  </a>
+
 </nav>
 
+
+<!-- =====================================================
+     HERO PRINCIPAL
+===================================================== -->
 <section class="hero-banner">
-  <img src="assets/frutas frescas.jpg" alt="Frutas frescas">
-  <div class="destaque">
-    <img src="assets/logo.png" alt="market gon logo" class="hero-logo">
+
+  <div class="hero-conteudo">
+
+    <span class="hero-tag">
+      MERCADO FRESCO TODOS OS DIAS
+    </span>
+
+    <h1>
+      SUA MERCEARIA,
+      <strong>FRESCA</strong>,
+      RÁPIDA E FÁCIL.
+    </h1>
+
+    <p>
+      Produtos selecionados para sua despensa,
+      com praticidade e segurança direto para sua casa.
+    </p>
+
+    <button
+      class="hero-botao"
+      onclick="filtrarCategoria('ofertas')"
+    >
+      Ver ofertas
+      <span>→</span>
+    </button>
+
+    <div class="hero-indicadores">
+      <span class="ativo"></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
   </div>
-  <img src="assets/legumes.jpg" alt="Verduras frescas">
+
+
+  <div class="hero-imagem">
+
+    <div class="circulo circulo-1"></div>
+    <div class="circulo circulo-2"></div>
+    <div class="circulo circulo-3"></div>
+
+    <img
+      src="assets/frutas frescas.jpg"
+      alt="Produtos frescos Market Gon"
+    >
+
+    <div class="hero-selo">
+      <strong>MARKET GON</strong>
+      <span>Sua Mercearia Online</span>
+    </div>
+
+  </div>
+
 </section>
 
+
+<!-- =====================================================
+     BENEFÍCIOS
+===================================================== -->
+<section class="beneficios">
+
+  <div class="beneficio">
+    <div class="beneficio-icone">🌱</div>
+
+    <div>
+      <strong>Produtos frescos</strong>
+      <span>Selecionados para você</span>
+    </div>
+  </div>
+
+
+  <div class="beneficio">
+    <div class="beneficio-icone">🔒</div>
+
+    <div>
+      <strong>Compra segura</strong>
+      <span>Seus dados protegidos</span>
+    </div>
+  </div>
+
+
+  <div class="beneficio">
+    <div class="beneficio-icone">🚚</div>
+
+    <div>
+      <strong>Receba em casa</strong>
+      <span>Praticidade na sua porta</span>
+    </div>
+  </div>
+
+
+  <div class="beneficio">
+    <div class="beneficio-icone">⭐</div>
+
+    <div>
+      <strong>Qualidade garantida</strong>
+      <span>Produtos selecionados</span>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     CATEGORIAS RÁPIDAS
+===================================================== -->
+<section class="categorias-section">
+
+  <div class="titulo-comum">
+    <span class="linha-verde"></span>
+
+    <div>
+      <small>ENCONTRE O QUE PRECISA</small>
+      <h2>Compre por categoria</h2>
+    </div>
+  </div>
+
+
+  <div class="categorias-grid">
+
+    <button
+      class="categoria-card categoria-frutas"
+      onclick="filtrarCategoria('frutas')"
+    >
+      <span class="categoria-icon">🍎</span>
+      <strong>Frutas</strong>
+      <small>Frescas todos os dias</small>
+      <span class="categoria-seta">→</span>
+    </button>
+
+
+    <button
+      class="categoria-card"
+      onclick="filtrarCategoria('laticinios')"
+    >
+      <span class="categoria-icon">🥛</span>
+      <strong>Laticínios</strong>
+      <small>Qualidade para sua casa</small>
+      <span class="categoria-seta">→</span>
+    </button>
+
+
+    <button
+      class="categoria-card"
+      onclick="filtrarCategoria('bebidas')"
+    >
+      <span class="categoria-icon">🥤</span>
+      <strong>Bebidas</strong>
+      <small>Para todos os momentos</small>
+      <span class="categoria-seta">→</span>
+    </button>
+
+
+    <button
+      class="categoria-card"
+      onclick="filtrarCategoria('limpeza')"
+    >
+      <span class="categoria-icon">🧹</span>
+      <strong>Limpeza</strong>
+      <small>Cuide da sua casa</small>
+      <span class="categoria-seta">→</span>
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     PRODUTOS
+===================================================== -->
 <section class="secao">
-  <h3 id="titulo-secao">Ofertas para você</h3>
-  <div class="grid-produtos" id="grid-produtos">
+
+  <div class="titulo-produtos">
+
+    <div>
+      <span class="mini-titulo">
+        OFERTAS ESPECIAIS
+      </span>
+
+      <h3 id="titulo-secao">
+        Ofertas para você
+      </h3>
+    </div>
+
+    <button
+      class="btn-ver-todos"
+      onclick="filtrarCategoria('')"
+    >
+      Ver todos
+      <span>→</span>
+    </button>
+
+  </div>
+
+
+  <div
+    class="grid-produtos"
+    id="grid-produtos"
+  >
     <p>Carregando produtos...</p>
   </div>
+
 </section>
 
-<!-- Modal de Detalhes do Produto -->
-<div id="modal-produto" class="modal-overlay hidden">
+
+<!-- =====================================================
+     BANNER PROMOCIONAL
+===================================================== -->
+<section class="banner-promocional">
+
+  <div class="promo-conteudo">
+
+    <span>OFERTA DA SEMANA</span>
+
+    <h2>
+      Economize nas suas compras
+    </h2>
+
+    <p>
+      Aproveite nossos preços especiais
+      por tempo limitado.
+    </p>
+
+    <button
+      onclick="filtrarCategoria('ofertas')"
+    >
+      Ver ofertas
+      <span>→</span>
+    </button>
+
+  </div>
+
+  <div class="promo-decoracao">
+    🛒
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     MODAL DE DETALHES DO PRODUTO
+===================================================== -->
+<div
+  id="modal-produto"
+  class="modal-overlay hidden"
+>
+
   <div class="modal-conteudo">
-    <button class="modal-fechar" id="btn-fechar-modal" aria-label="Fechar">&times;</button>
+
+    <button
+      class="modal-fechar"
+      id="btn-fechar-modal"
+      aria-label="Fechar"
+    >
+      &times;
+    </button>
+
+
     <div class="modal-body">
+
       <div class="modal-imagem">
-        <img id="modal-img" src="" alt="Produto">
+        <img
+          id="modal-img"
+          src=""
+          alt="Produto"
+        >
       </div>
+
+
       <div class="modal-detalhes">
-        <h3 id="modal-nome">Nome do Produto</h3>
+
+        <h3 id="modal-nome">
+          Nome do Produto
+        </h3>
+
+
         <div class="modal-precos">
-          <span id="modal-preco-antigo" class="preco-antigo"></span>
-          <span id="modal-preco-atual" class="preco-atual"></span>
-          <span id="modal-desconto" class="desconto"></span>
+
+          <span
+            id="modal-preco-antigo"
+            class="preco-antigo"
+          ></span>
+
+          <span
+            id="modal-preco-atual"
+            class="preco-atual"
+          ></span>
+
+          <span
+            id="modal-desconto"
+            class="desconto"
+          ></span>
+
         </div>
-        
+
+
         <div class="modal-quantidade">
+
           <span>Quantidade:</span>
+
           <div class="controle-qtd">
-            <button type="button" id="btn-qtd-menos">-</button>
-            <span id="qtd-modal">1</span>
-            <button type="button" id="btn-qtd-mais">+</button>
+
+            <button
+              type="button"
+              id="btn-qtd-menos"
+            >
+              -
+            </button>
+
+            <span id="qtd-modal">
+              1
+            </span>
+
+            <button
+              type="button"
+              id="btn-qtd-mais"
+            >
+              +
+            </button>
+
           </div>
+
         </div>
 
-        <button id="btn-modal-adicionar" class="btn-comprar-modal">Adicionar ao Carrinho</button>
+
+        <button
+          id="btn-modal-adicionar"
+          class="btn-comprar-modal"
+        >
+          Adicionar ao Carrinho
+        </button>
+
       </div>
+
     </div>
+
   </div>
+
 </div>
 
-<!-- Modal: Login Necessário -->
-<div id="modal-login-requerido" class="modal-overlay hidden">
+
+<!-- =====================================================
+     MODAL LOGIN
+===================================================== -->
+<div
+  id="modal-login-requerido"
+  class="modal-overlay hidden"
+>
+
   <div class="modal-conteudo modal-pequeno">
-    <button class="modal-fechar" onclick="document.getElementById('modal-login-requerido').classList.add('hidden')">&times;</button>
-    <div style="padding: 20px; text-align: center;">
-      <h3 style="margin-top:0; color:#1e293b;">Acesso Restrito</h3>
-      <p style="color:#64748b; margin-bottom: 24px;">Você precisa estar logado para acessar o carrinho e finalizar suas compras.</p>
+
+    <button
+      class="modal-fechar"
+      onclick="document.getElementById('modal-login-requerido').classList.add('hidden')"
+    >
+      &times;
+    </button>
+
+
+    <div style="padding:20px; text-align:center;">
+
+      <h3 style="margin-top:0; color:#1e293b;">
+        Acesso Restrito
+      </h3>
+
+      <p style="color:#64748b; margin-bottom:24px;">
+        Você precisa estar logado para acessar
+        o carrinho e finalizar suas compras.
+      </p>
+
+
       <div style="display:flex; gap:10px;">
-        <a href="login.html" class="btn-comprar-modal" style="flex:1; text-align:center;">Fazer Login</a>
-        <a href="cadastro.html" class="btn-pill-secundario" style="flex:1; text-align:center;">Cadastrar</a>
+
+        <a
+          href="login.html"
+          class="btn-comprar-modal"
+          style="flex:1; text-align:center;"
+        >
+          Fazer Login
+        </a>
+
+        <a
+          href="cadastro.html"
+          class="btn-pill-secundario"
+          style="flex:1; text-align:center;"
+        >
+          Cadastrar
+        </a>
+
       </div>
+
     </div>
+
   </div>
+
 </div>
 
-<!-- Notificação Toast -->
-<div id="toast" class="toast hidden">Produto adicionado ao carrinho!</div>
 
+<!-- =====================================================
+     TOAST
+===================================================== -->
+<div
+  id="toast"
+  class="toast hidden"
+>
+  Produto adicionado ao carrinho!
+</div>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 <footer class="footer">
-  🔒 Informações 100% seguras &nbsp;|&nbsp; © Market Gon - Sua Mercearia Online
+
+  <span>🔒</span>
+
+  <span>
+    Informações 100% seguras
+  </span>
+
+  <span class="footer-separador">
+    |
+  </span>
+
+  <span>
+    © Market Gon - Sua Mercearia Online
+  </span>
+
 </footer>
+
 
 <script src="js/api.js"></script>
 <script src="js/app.js"></script>
+
 </body>
 </html>

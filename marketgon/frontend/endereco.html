@@ -121,6 +121,22 @@
 <script>
 document.getElementById('form-endereco').addEventListener('submit', (e) => {
   e.preventDefault();
+
+  // 1. Captura todos os dados digitados
+  const dadosEndereco = {
+    cep: document.getElementById('cep').value,
+    destinatario: document.getElementById('destinatario').value,
+    endereco: document.getElementById('endereco').value,
+    numero: document.getElementById('numero').value,
+    bairro: document.getElementById('bairro').value,
+    cidade: document.getElementById('cidade').value,
+    tipo_local: document.getElementById('tipo_local').value,
+    ponto_referencia: document.getElementById('ponto_referencia').value
+  };
+
+  // 2. Salva no navegador do usuário
+  localStorage.setItem('mg_endereco_checkout', JSON.stringify(dadosEndereco));
+
   alert('Endereço salvo com sucesso!');
   window.location.href = 'carrinho.html';
 });
