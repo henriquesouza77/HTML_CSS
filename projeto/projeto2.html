@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finaizar Compra</title>
+</head>
+<body>
+    <form action="finalizar_compra">
+     <fieldset>
+        <legend>Endereço de Entrega </legend>
+        <br>
+
+        <label for="nome_destinatrio">Nome do Destinatario</label>
+        <input type="text" id="nome_destinatrio"></input>
+        <br><br>
+
+        <label for="cep">CEP</label>
+        <input type="tex"id="cep" placeholder="00000-000"></input>
+        <br><br>
+
+        <label for="Endereço">Rua</label>
+        <input type="text" id="Endereço"></input>
+        <br><br>
+
+        <label for="endereco">Numero</label>
+        <input type="text"></input>
+        <br><br>
+
+        <label for="endereco">complemento</label>
+        <input type="text"></input>
+     </fieldset>
+     <fieldset>
+        <legend>Opçoes de Entrega</legend>
+
+        <label for="entrega">Periodo de Entrega</label>
+        <select name="periodo_Entrega" id="entrega">
+            <option value="manha">Manha (08h - 12h)</option>
+        </select>
+        <br><br>
+
+        <p>Instruçao de entrega</p>
+
+        <input type="radio" id="opcao" name="entrega" value="deixar">Deixar na portaria </input>
+        <label for="opcao" name="opcao"></label>
+       
+        <br>
+
+        <input type="radio" id="opcao" name="entrega" value="entregar">entregar em maos </input>
+        <label for="opcao" name="opcao"></label>
+       
+        <br>
+
+        <input type="radio" id="opcao" name="entrega" value="ligar">ligar ao chegar </input>
+        <label for="opcao" name="opcao"></label>
+        
+        <br><br>
+
+        <label for="cupom">Cupom de desconto</label>
+        <input type="text"></input>
+        
+        <br><br>
+
+        <input type="checkbox" id="zap"></input>
+        <label for="zap">Receber ofertas por Whatsapp</label>
+     </fieldset>
+   
+     <br>
+
+    <input type="submit" value="Finalizar Compra">
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matricula Escola</title>
+</head>
+<body>
+    <h1>Matricula - Escola Online</h1>
+  
+        <form>
+            <fieldset>
+                <legend>dados pessoais</legend>
+                
+                <label for="Nome completo">nome completo</label>
+                <input type="text" id="Nome completo"></input>
+
+                <br><br>
+                
+                <label for="data_nascimento">Data de nascimento</label>
+                <input type="date"></input>
+                
+                <br><br>
+
+                <label for="email_aluno">E-mail do Aluno</label>
+                <input type="email"> </input>
+
+                <br><br>
+
+                <label for="senha_aluno">Senha de acesso</label>
+                 <input type="password" id="senha_aluno" name="senha"></input>
+                 
+                 <br><br>
+
+                 <label for="telefone">Telefone de emergencia</label>
+                 <input type="tel" value="(00) 0 00000000"></input> 
+            </fieldset>
+            <fieldset>               
+             <legend>Preferencias de Estudo</legend>
+                
+                <p>Area de interesse</p>
+
+                <input type="checkbox" id="front-end"></input>
+                <label for="frontend">front-end</label>
+
+                <br>
+
+                <input type="checkbox" id="backend"></input>
+                <label for="backend">backend</label>
+
+                <br>
+
+                <input type="checkbox" id="design"></input>
+                <label for="design">design</label>
+
+                <br>
+
+                <input type="checkbox" id="dados"></input>
+                <label for="dados">dados</label>
+
+                <br><br><br>
+
+                <label for="conhecimento">Como conheceu a escola?</label>
+                <select name="como_conhece" id="conhecimento">
+                    <option value="selecionar">selecione uma opçao</option>
+                    <option value="indicacao">indicação</option>
+                </select>
+            </fieldset>
+        </form>
+        <br>
+
+        
+        <input type="submit" value="Matricular"></input> <input type="reset" value="limpar"></input>
+    </body>
+</html>
